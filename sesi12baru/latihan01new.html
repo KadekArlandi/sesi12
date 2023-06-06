@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Data</title>
+</head>
+<body>
+
+    <div>
+        Nama :
+        <input type="text" name="txNAMA" id="txNAMA">
+    </div>
+    <div>
+        Email :
+        <input type="text" name="txEMAIL" id="txEMAIL">
+    </div>
+    <div>
+        Username :
+        <input type="text" name="txUSER" id="txUSER">
+    </div>
+    <div>
+        Password :
+        <input type="password" name="txPASS1" id="txPASS1">
+    </div>
+    <div>
+        Verifikasi Password : 
+        <input type="password" name="txPASS2" id="txPASS2">
+    </div>
+    <div>
+        <button type="button" id="cmdupdate" onclick="StoreData()">Buat Data</button>
+    </div>
+
+    
+    <SCript>
+        function StoreData(){
+            let nm = document.getElementById("txNAMA").value;
+            let em = document.getElementById("txEMAIL").value;
+            let us = document.getElementById("txUSER").value;
+            let ps1 = document.getElementById("txPASS1").value;
+            let ps2 = document.getElementById("txPASS2").value;
+            let params = 'txNAMA='+nm+'&txEMAIL='+em+'&txUSER'+usr+'&txPASS1='+ps1+'&txPASS2='+ps2
+
+            let cx = "https://webpro.ptov.my.id/api/curduser.php?aksi=update";
+            
+            const jsHTTP = new XMLHttpRequest();
+            jsHTTP.open("POST",cx,true);
+            jsHTTP.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            jshTTP.send(params);
+            jsHTTP.onload = function() {
+                const data = JSON.parse(jsHTTP.responseText);
+                console.log(data);
+                if(data.error==0){
+                    window.location.replace="Latihan01.html";
+                }
+            }    
+        }
+
+    </SCript>
+
+</body>
+</html>
